@@ -1,0 +1,38 @@
+/* Cinematic narrative moments only; no learning-screen selectors. */
+.k-scene-intro .k-portrait,.k-scene-complete .k-complete-top,.k-scene-mia .k-mia{isolation:isolate}
+.k-scene-complete .k-complete-top{position:relative}
+.k-scene-intro .k-portrait>img,.k-scene-complete .k-complete-top>img,.k-scene-mia .k-mia>img{translate:var(--moment-x,0px) var(--moment-y,0px);transition:translate .65s cubic-bezier(.2,.7,.3,1);will-change:transform}
+.k-scene-intro .k-portrait>img{animation:moment-kai-chaos 7.8s ease-in-out infinite}
+.k-scene-complete .k-complete-top>img{animation:moment-kai-calm 10s ease-in-out infinite}
+.k-scene-mia .k-mia>img{animation:moment-mia-poise 12s cubic-bezier(.45,0,.55,1) infinite;transition-duration:1s}
+.k-scene-intro .k-portrait:before,.k-scene-complete .k-complete-top:before,.k-scene-mia .k-mia:before{content:'';position:absolute;pointer-events:none;z-index:-1;border-radius:50%}
+.k-scene-intro .k-portrait:before{inset:12% 9% 7%;background:radial-gradient(ellipse,#c3ed3e18,transparent 68%);animation:moment-lime-light 6.7s ease-in-out infinite}
+.k-scene-complete .k-complete-top:before{right:0;top:4%;bottom:0;width:30%;background:radial-gradient(ellipse,#d1f53b16,transparent 69%);animation:moment-calm-light 11s ease-in-out infinite}
+.k-scene-mia .k-mia:before{right:0;top:10%;bottom:5%;width:45%;background:radial-gradient(ellipse,#b78bff1d,transparent 68%);animation:moment-violet-light 13s ease-in-out infinite}
+.k-scene-intro .t1{animation:moment-clock-one 8s ease-in-out infinite}.k-scene-intro .t2{animation:moment-clock-two 9.5s ease-in-out infinite}
+.k-scene-intro .k-scrawl{animation:moment-handwritten 1.3s .15s both}
+.k-scene-complete .k-scrawl-static{display:inline-block;animation:moment-handwritten 1.5s .2s both}
+.k-scene-mia .k-violet-line{transform-origin:50% 100%;animation:moment-line-draw 1.6s cubic-bezier(.22,.7,.25,1) both}
+/* Small marks are decorative, never interactive controls or labels. */
+.k-scene-intro .k-portrait:after{content:'';position:absolute;right:13%;top:43%;width:32px;height:32px;border:1px solid #d1f53b99;border-radius:50%;background:linear-gradient(var(--lime),var(--lime)) 50% 33%/1px 10px no-repeat,linear-gradient(35deg,transparent 45%,var(--lime) 47% 54%,transparent 56%) 62% 58%/11px 8px no-repeat;opacity:0;transform:rotate(-12deg) translateY(3px);transition:opacity .35s,transform .5s;pointer-events:none;z-index:3}
+.k-scene-intro.moment-near .k-portrait:after{opacity:.8;transform:rotate(4deg) translateY(0)}
+.k-scene-complete .k-complete-top:after{content:'';position:absolute;right:2%;bottom:15%;width:30px;height:8px;border-bottom:1px solid #d1f53b99;opacity:0;transform:translateX(-3px);transition:opacity .6s,transform .8s;pointer-events:none}
+.k-scene-complete.moment-near .k-complete-top:after{opacity:.6;transform:none}
+.k-scene-mia .k-mia:after{content:'';position:absolute;right:8%;top:30%;width:27px;height:38px;border-top:1px solid #b78bffbb;border-bottom:1px solid #b78bffbb;background:linear-gradient(#b78bff99,#b78bff99) left 50%/18px 1px no-repeat;opacity:.35;transform:translateY(0);animation:moment-note-align 1.4s .2s both;transition:opacity .7s,translate .9s;pointer-events:none}
+.k-scene-mia.moment-near .k-mia:after{opacity:.85;translate:-2px 0}
+@keyframes moment-kai-chaos{0%,100%{transform:translate(0,0) rotate(0)}32%{transform:translate(1px,-2px) rotate(.16deg)}58%{transform:translate(-1px,-.5px) rotate(-.12deg)}76%{transform:translate(.5px,-1.5px) rotate(.08deg)}}
+@keyframes moment-kai-calm{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+@keyframes moment-mia-poise{0%,25%,100%{transform:translateY(0)}55%,70%{transform:translateY(-1px)}}
+@keyframes moment-lime-light{0%,100%{opacity:.6}42%{opacity:1}71%{opacity:.75}}
+@keyframes moment-calm-light{0%,100%{opacity:.7}50%{opacity:.95}}
+@keyframes moment-violet-light{0%,100%{opacity:.65;translate:0 0}50%{opacity:.95;translate:-2px 0}}
+@keyframes moment-clock-one{0%,100%{translate:0 0;rotate:0deg}40%{translate:-1px -2px;rotate:-.6deg}72%{translate:1px 0;rotate:.3deg}}
+@keyframes moment-clock-two{0%,100%{translate:0 0}55%{translate:2px -1px}}
+@keyframes moment-handwritten{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes moment-line-draw{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0)}}
+@keyframes moment-note-align{from{opacity:0;transform:translateY(5px)}to{opacity:.35;transform:translateY(0)}}
+/* OFF means a complete still composition, including one-shot reveals. */
+.motion-paused :is(.k-scene-intro,.k-scene-complete,.k-scene-mia) *,.motion-paused :is(.k-scene-intro,.k-scene-complete,.k-scene-mia) :before,.motion-paused :is(.k-scene-intro,.k-scene-complete,.k-scene-mia) :after{animation:none!important;transition:none!important;translate:none!important;rotate:none!important;clip-path:none!important}
+.motion-paused :is(.k-portrait,.k-complete-top,.k-mia)>img{transform:none!important}
+.motion-paused .k-portrait:after,.motion-paused .k-complete-top:after{opacity:0!important}
+@media(prefers-reduced-motion:reduce){:is(.k-scene-intro,.k-scene-complete,.k-scene-mia) *,:is(.k-scene-intro,.k-scene-complete,.k-scene-mia) :before,:is(.k-scene-intro,.k-scene-complete,.k-scene-mia) :after{animation:none!important;transition:none!important;translate:none!important;rotate:none!important;clip-path:none!important}:is(.k-portrait,.k-complete-top,.k-mia)>img{transform:none!important}.k-portrait:after,.k-complete-top:after{opacity:0!important}}

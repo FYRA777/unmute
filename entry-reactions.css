@@ -1,0 +1,26 @@
+/* Home-style discovery belongs to the two character entrances only. */
+.k-scene-intro .k-portrait,.k-scene-mia .k-mia{--entry-accent:var(--lime)}
+.k-scene-mia .k-mia{--entry-accent:var(--violet)}
+.entry-character{cursor:pointer;outline-offset:5px;transition:filter .22s,translate .3s!important}
+.entry-character:focus-visible{outline:2px solid var(--entry-accent)}
+.k-scene-intro .k-portrait>img,.k-scene-mia .k-mia>img{animation:none;translate:none}
+.k-scene-intro .k-portrait:before,.k-scene-mia .k-mia:before,.k-scene-intro .k-float{animation:none}
+.k-scene-intro .entry-active>img{filter:drop-shadow(0 0 2px #d1f53b) drop-shadow(0 0 22px #d1f53b77);translate:1px -2px}
+.k-scene-mia .entry-active>img{filter:drop-shadow(0 0 2px #b78bff) drop-shadow(0 0 24px #b78bff66);translate:0 -1px;transition-duration:.45s!important}
+.entry-message{position:absolute;z-index:8;pointer-events:none;max-width:270px;padding:15px 20px;background:#101213f2;border-left:2px solid var(--entry-accent);box-shadow:0 12px 30px #0005;color:var(--entry-accent)}
+.entry-message[hidden]{display:none!important}.entry-message strong{display:block;font:700 32px/1.05 var(--display)}.entry-message span{display:block;margin-top:7px;font:12px/1.5 'DM Sans',sans-serif;color:var(--paper)}
+.k-portrait .entry-message{left:-6%;bottom:23%;transform:rotate(-3deg);animation:entry-kai-reaction .2s ease-out}
+.k-mia .entry-message{right:1%;bottom:23%;animation:entry-mia-reaction .4s cubic-bezier(.2,.7,.3,1)}
+.k-scene-intro .k-portrait.entry-active:after{opacity:1;transform:rotate(4deg);border-width:2px}
+.k-scene-mia .k-mia.entry-active:after{opacity:1;translate:-2px 0;box-shadow:0 0 12px #b78bff44}
+.entry-discovery{position:absolute;right:4%;bottom:1%;z-index:5;color:#c7cabc;font-size:10px;letter-spacing:.04em;pointer-events:none}.k-portrait .entry-discovery{bottom:-28px}.entry-active .entry-discovery{color:var(--entry-accent)}
+.entry-story-cta{transition:box-shadow .2s,background .2s!important}.entry-story-cta.entry-cta-active{box-shadow:0 0 28px #d1f53b55;background:#defb71}
+.entry-mia-cta{background:var(--violet);color:#1a1027;font-size:14px;gap:12px}.entry-mia-cta:hover,.entry-mia-cta.entry-cta-active{background:#c9a8ff;box-shadow:0 0 28px #b78bff55}
+.k-mia .k-end-actions{justify-content:flex-start}.entry-mia-cta{flex-basis:auto}#mia-entry-dialog .eyebrow{color:var(--violet)}
+@keyframes entry-kai-reaction{from{opacity:0;translate:-5px 4px}to{opacity:1;translate:0 0}}
+@keyframes entry-mia-reaction{from{opacity:0;translate:0 5px}to{opacity:1;translate:0 0}}
+@media(max-width:700px){.k-portrait .entry-message{left:0;bottom:16%;max-width:245px}.k-mia .entry-message{right:0;bottom:80px;max-width:245px}.entry-message strong{font-size:28px}.entry-message span{font-size:12px}.k-mia .entry-discovery{bottom:0}.entry-mia-cta{width:100%}}
+.motion-paused .entry-character,.motion-paused .entry-message{translate:none!important;animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){.entry-character,.entry-message{translate:none!important;animation:none!important;transition:none!important}}
+
+.mia-arrives .k-route-caption{color:#ad83ff}
